@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import { connectedDB } from "./config/db.js"
 import { authRouter } from "./routes/auth.route.js"
 import { walletRouter } from "./routes/wallet.route.js"
+import { watchListRouter } from "./routes/watchList.route.js"
 
 const app = express()
 app.use(express.json())
@@ -15,6 +16,7 @@ app.use(cors())
 
 app.use("/auth", authRouter)
 app.use("/wallet", walletRouter)
+app.use("/watchlist", watchListRouter)
 
 app.listen(port, ()=>{
     connectedDB()
