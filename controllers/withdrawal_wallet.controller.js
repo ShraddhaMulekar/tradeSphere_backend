@@ -12,10 +12,10 @@ export const withdrawalWalletController = async (req, res) => {
     }
     user.wallet -= amount;
     await user.save();
-    console.log(user.wallet)
+    // console.log(user.wallet)
     return res.status(200).json({
       message: "Withdrawal successful",
-      withdrawal_wallet: user.wallet,
+      withdrawal_wallet: amount,
     });
   } catch (error) {
     return res
