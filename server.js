@@ -3,15 +3,18 @@ import cors from "cors"
 import dotenv from "dotenv"
 import { connectedDB } from "./config/db.js"
 import { authRouter } from "./routes/auth.route.js"
+import { walletRouter } from "./routes/wallet.route.js"
 
 const app = express()
 app.use(express.json())
+
 dotenv.config()
 const port = process.env.PORT || 3000
 
 app.use(cors())
 
 app.use("/auth", authRouter)
+app.use("/wallet", walletRouter)
 
 app.listen(port, ()=>{
     connectedDB()
