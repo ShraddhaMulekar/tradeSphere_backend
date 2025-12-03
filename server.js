@@ -8,6 +8,7 @@ import { watchListRouter } from "./routes/watchList.route.js"
 import { tradeRouter } from "./routes/trade.route.js"
 import { portFolioRouter } from "./routes/portfolio.route.js"
 import { orderRouter } from "./routes/order.route.js"
+import { stockSearchRouter } from "./routes/stockSearch.route.js"
 
 const app = express()
 app.use(express.json())
@@ -23,6 +24,7 @@ app.use("/watchlist", watchListRouter)
 app.use("/trade", tradeRouter)
 app.use("/portfolio", portFolioRouter)
 app.use("/order", orderRouter)
+app.use("/stock", stockSearchRouter)
 
 app.listen(port, ()=>{
     connectedDB()
