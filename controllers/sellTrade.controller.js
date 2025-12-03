@@ -8,7 +8,6 @@ export const sellTradeController = async (req, res) => {
 
     const stock = await PortfolioModel.findOne({ userId: req.userId, symbol });
 
-    console.log("stock:", stock);
     if (!stock || stock.quantity < quantity) {
       return res.status(400).json({ message: "You don't own enough stock" });
     }
