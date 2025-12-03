@@ -8,7 +8,7 @@ export const checkAllWatchlistController = async(req, res) => {
         if(!user){
             return res.status(404).json({message: "User not found"})
         }
-        return res.status(200).json({watchlist: user.watchlist})
+        return res.status(200).json({message: "Check Watch list", watchlist: user.watchlist})
     } catch (error) {
         return res.status(500).json({message: error.message})
     }
