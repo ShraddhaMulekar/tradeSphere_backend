@@ -4,7 +4,7 @@ export const searchStockController = async (req, res) => {
   try {
     const { symbol } = req.params;
 
-    const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${symbol}&apikey=${process.env.FINNHUB_KEY}`;    //FINNHUB_KEY -> https://finnhub.io/dashboard
+    const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${symbol}&apikey=${process.env.FINNHUB_KEY}`; //FINNHUB_KEY -> https://finnhub.io/dashboard
 
     const { data } = await axios.get(url);
 
