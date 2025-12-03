@@ -11,7 +11,7 @@ export const loginController = async (req, res) => {
     if (!matchEmail) {
       return res
         .status(404)
-        .json({ msg: "you are not register. please register!" });
+        .json({ message: "you are not register. please register!" });
     } else {
       bcrypt.compare(password, matchEmail.password, async (err, result)=>{
         if(result){
@@ -20,13 +20,13 @@ export const loginController = async (req, res) => {
                 userName : matchEmail.name
             }
             const token = jwt.sign(payload, process.env.JWT_SECRET)
-            return res.status(200).json({msg: "log in successful!", token});
+            return res.status(200).json({message: "log in successful!", token});
         } else{
-            return res.status(404).json({msg: "password invalid!", err});
+            return res.status(404).json({message: "password invalid!", err});
         }
       });
     }
   } catch (error) {
-    return res.status(404).json({ msg: "Error in backend user log in post router", error });
+    return res.status(404).json({ message: "Error in backend user log in post router", error });
   }
 };
