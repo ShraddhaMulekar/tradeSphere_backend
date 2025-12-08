@@ -16,7 +16,7 @@ export const addWatchListController = async (req, res) => {
     return res
       .status(200)
       .json({
-        message: "Symbol added to watchlist",
+        message: "Share added to watchlist",
         watchlist: user.watchlist,
       });
   } catch (error) {

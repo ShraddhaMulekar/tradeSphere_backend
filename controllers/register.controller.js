@@ -13,6 +13,12 @@ export const registerController = async (req, res) => {
     });
   }
 
+  if(!name || !email || !password){
+    return res.json({
+        message: "All fields are required!"
+    })
+  }
+
   try {
     const matchEmail = await UserModel.findOne({ email });
 

@@ -10,12 +10,10 @@ export const removeWatchlistController = async (req, res) => {
     }
     user.watchlist = user.watchlist.filter((item) => item !== symbol);
     await user.save();
-    return res
-      .status(200)
-      .json({
-        message: "Symbol removed from watchlist",
-        watchlist: user.watchlist,
-      });
+    return res.status(200).json({
+      message: "share removed from watchlist",
+      watchlist: user.watchlist,
+    });
   } catch (error) {
     return res
       .status(500)

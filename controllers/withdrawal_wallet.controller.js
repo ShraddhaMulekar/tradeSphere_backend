@@ -1,9 +1,8 @@
 import { UserModel } from "../models/user.model.js";
 
 export const withdrawalWalletController = async (req, res) => {
-    
-    try {
-      const { amount } = req.body;
+  try {
+    const { amount } = req.body;
     const user = await UserModel.findById(req.userId);
     if (user.wallet < amount) {
       return res
@@ -12,7 +11,7 @@ export const withdrawalWalletController = async (req, res) => {
     }
     user.wallet -= amount;
     await user.save();
-    // console.log(user.wallet)
+
     return res.status(200).json({
       message: "Withdrawal successful",
       withdrawal_wallet: amount,

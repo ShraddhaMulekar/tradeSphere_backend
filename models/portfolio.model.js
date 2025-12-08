@@ -2,13 +2,14 @@ import mongoose from "mongoose";
 
 const PortfolioSchema = new mongoose.Schema(
   {
-    userId: mongoose.Schema.Types.ObjectId,
-    symbol: String,
-    avgBuyPrice: Number,
-    quantity: Number,
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    symbol: { type: String, required: true },
+    buyPrice: { type: Number, required: true },
+    quantity: { type: Number, required: true },
   },
   {
     versionKey: false,
+    timestamps: true,
   }
 );
 

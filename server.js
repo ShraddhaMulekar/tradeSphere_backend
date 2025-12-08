@@ -10,6 +10,7 @@ import { portFolioRouter } from "./routes/portfolio.route.js"
 import { orderRouter } from "./routes/order.route.js"
 import { stockSearchRouter } from "./routes/stockSearch.route.js"
 import { priceRouter } from "./routes/price.route.js"
+import { popularStocksRouter } from "./routes/popularStock.route.js"
 
 const app = express()
 app.use(express.json())
@@ -26,6 +27,7 @@ app.use("/trade", tradeRouter)
 app.use("/portfolio", portFolioRouter)
 app.use("/order", orderRouter)
 app.use("/stock", stockSearchRouter)
+app.use("/stock", popularStocksRouter)
 app.use("/price", priceRouter)
 
 app.listen(port, ()=>{

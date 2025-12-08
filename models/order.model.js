@@ -1,17 +1,38 @@
 import mongoose from "mongoose";
 
-const OrderSchema = new mongoose.Schema(
+const orderSchema = new mongoose.Schema(
   {
-    userId: mongoose.Schema.Types.ObjectId,
-    symbol: String,
-    type: String, // BUY or SELL
-    price: Number,
-    quantity: Number,
-    time: { type: Date, default: Date.now },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    symbol: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      enum: ["BUY", "SELL"],
+    },
+    quantity: {
+      type: Number,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    total: {
+      type: Number,
+    },
+    status: {
+      type: String,
+      enum: ["pending", "completed", "failed"],
+      default: "pending", // ✅ instant trade
+    },
   },
-  {
-    versionKey: false,
-  }
+  { timestamps: true, versionKey: false }
 );
 
-export const OrderModel = mongoose.model("order", OrderSchema);
+export const OrderModel = mongoose.model("Order", orderSchema);
