@@ -17,13 +17,13 @@ A comprehensive REST API for a stock trading platform built with Node.js, Expres
 
 - Node.js (v14 or higher)
 - MongoDB (local or MongoDB Atlas)
-- Finnhub API Key ([Get it here](https://finnhub.io/))
+- Finnhub API Key 
 
 ## 🛠️ Installation
 
 1. **Clone the repository**
 ```bash
-git clone <your-repo-url>
+git clone 
 cd tradesphere-backend
 ```
 
