@@ -10,12 +10,14 @@ export const registerController = async (req, res) => {
   if (!regexPass.test(password)) {
     return res.json({
       message: "Password must contain at least one letter, one number, one special character, and be at most 8 characters long.",
+      success: false,
     });
   }
 
   if(!name || !email || !password){
     return res.json({
-        message: "All fields are required!"
+        message: "All fields are required!",
+        success: false,
     })
   }
 
@@ -27,6 +29,7 @@ export const registerController = async (req, res) => {
       return res.json({
         message: "You are already register with same email Id. please Log in now!",
         matchEmail,
+        success: false,
       });
     }
 
@@ -36,12 +39,12 @@ export const registerController = async (req, res) => {
       async (err, hash) => {
         if (err) {
             // console.log("pass not valid", err)
-          return res.json({ message: "password invalid!", err });
+          return res.json({ message: "password invalid!", err, success: false });
         } else {
           let newUser = UserModel({ email, name, password: hash });
           await newUser.save();
         //   console.log("regi", newUser)
-          return res.json({ message: "register successful!", newUser });
+          return res.json({ message: "register successful!", newUser, success:true });
         }
       }
     );
@@ -49,6 +52,7 @@ export const registerController = async (req, res) => {
     // console.log(error);
     return res.json({
       message: "Error in backend user register post router",
+      success: false,
       error,
     });
   }
