@@ -28,7 +28,7 @@ export const loginController = async (req, res) => {
             const token = jwt.sign(payload, process.env.JWT_SECRET)
             return res.status(200).json({message: "log in successful!", token});
         } else{
-            return res.status(404).json({message: "password invalid!", err});
+            return res.status(404).json({message: "password doesn't match!", err});
         }
       });
     }
